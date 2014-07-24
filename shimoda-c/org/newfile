@@ -1,0 +1,21 @@
+create database shimodab;
+
+-- ユーザ名test、パスワードpassでアクセスできるようにする
+grant all on shimodab.* to test@localhost identified by 'pass';
+
+use shimodab;
+
+create table users (
+  id int auto_increment primary key,
+  password varchar(20),
+  name varchar(20),
+  logintime datetime,
+  logouttime datetime,
+  totaltime int
+) charset=utf8;
+
+insert into users (id,password,name) values (1,'pass','yabuki');
+
+
+-- 全員ログアウトさせる
+update users set logintime=null, logouttime=null;
